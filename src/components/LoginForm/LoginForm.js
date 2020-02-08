@@ -11,9 +11,9 @@ export default class LoginForm extends Component {
   state = { error: null }
 
   handleSubmitJWTAuth = e => {
-    e.preventDevault()
+    e.preventDefault()
     this.setState({ error: null})
-    const { user_name, password} = ev.target
+    const { user_name, password} = e.target
 
     AuthApiService.postLogin({
       user_name: user_name.value,
@@ -29,19 +29,6 @@ export default class LoginForm extends Component {
       this.setState({error: res.error})
     })
   }
-
-  {/*handleSubmitBasicAuth = ev => {
-    ev.preventDefault()
-    const { user_name, password } = ev.target
-
-    TokenService.saveAuthToken(
-      TokenService.makeBasicAuthToken(user_name.value, password.value)
-    )
-
-    user_name.value = ''
-    password.value = ''
-    this.props.onLoginSuccess()
-  }*/}
 
   render() {
     const { error } = this.state
